@@ -1,0 +1,38 @@
+\chapter{Perspectives}
+Les délais ne nous ont pas permis de mener à terme les objectifs que nous nous étions fixé. 
+Aussi il sera possible d'apporter d'autres amélioration au programme.
+
+\section{Atteindre les objectifs fixés}
+
+\subsection{Prioritaires}
+
+\subsubsection{Algorithmes}
+Certains algorithmes n'ont pas été implémentés comme Fractional Brownian Motion. Même si ce dernier est 
+simple, nous nous sommes concentrés sur les autres algorithmes tels que les érosions. 
+Pour produire Fractional Brownian Motion, il sera possible d'utiliser certains modules de LibNoise
+(module d'ajout, etc). Et cela sera possible car nos bruits héritent de LibNoise (\textit{via} NoiseBase).
+\subsubsection{Maillage et sphère}
+Les maillages triangulaires et hexagonaux ne sont pas présents mais il serait intéressant de les
+implémentés. Les sphères pourraient être conçues en partant d'un carte cubique ou d'un isocahèdre.
+\subsubsection{Raffinement locale}
+Un raffinement existe mais il ne permet pas de zoomer sur une zone de la carte. Il faudrait 
+utiliser les Quad-Tree pour cela. Chaque noeud du Quad-Tree contiendrait un face avec les vertex de la grille.
+Chaque fils de la grille serait une partie de la grille subdivisée (tesselation des grilles). Ainsi, il serait possible d'obtenir :
+\begin{itemize}
+ \item quatres fils pour les grilles carrées et triangulaires;
+ \item sept fils pour les grille hexagonales.
+\end{itemize}
+
+\subsection{Secondaires}
+
+\subsubsection{Implémentation d'un visualisateur}
+Il serait intéressant d'implémenter le visualisateur proposé sur le cahier des charges. De plus, 
+l'intégration avec le Quad-Tree permetterai d'obtenir une génération procédurale temps-réel avec des fonctions de zoom.
+
+\section{Amélioration des tests}
+Les tests unitaires effectués, jusqu'à présent, ne couvrent que les méthodes de générations.
+
+\section{Diminution du temps de calcul}
+Avec l'intégration d'un visualisateur, il va nécessairement falloir gagner du temps sur le calcul pour avoir un rendu temps-réel.
+Ainsi, l'utilisation du GPU est préférable au CPU. Il faudrait utiliser CUDA et/ou les sharders d'OPENGL pour effectuer
+les calculs sur le GPU.

@@ -1,0 +1,60 @@
+#ifndef SIDE_II
+#define SIDE_II
+
+
+template <typename T>
+Side<T>::Side(int n_vertex)
+{
+	m_n_vertex = n_vertex;
+	m_vertex = new std::vector<T>(m_n_vertex);
+}
+
+template <typename T>
+Side<T>::Side(int n_vertex, std::vector<T> *vertex)
+{
+	m_n_vertex = n_vertex;
+
+	m_vertex = new std::vector<T>(m_n_vertex);
+	for(unsigned i = 0; i < m_vertex->size(); ++i)
+		m_vertex[i] = vertex[i];
+}
+
+template <typename T>
+Side<T>::~Side()
+{
+	delete m_vertex;
+}
+
+template <typename T>
+T Side<T>::get_a_vertex(int i)  const
+{
+	return m_vertex->at(i);
+}
+
+template <typename T>
+std::vector<T> Side<T>::get_vertex() const
+{
+	return *m_vertex;
+}
+
+template <typename T>
+int Side<T>::get_n_vertex() const
+{
+	return m_n_vertex;
+}
+
+template <typename T>
+void Side<T>::set_vertex(std::vector<T> *vertex)
+{
+	for(unsigned i = 0; i < m_vertex->size(); ++i)
+		set_a_vertex(vertex[i], i);
+}
+
+template <typename T>
+void Side<T>::set_a_vertex(T *vertex, int i)
+{
+	m_vertex[i] = vertex;
+}
+
+#endif /* SIDE_II */
+

@@ -1,0 +1,31 @@
+Installation of Libterrain
+============================
+
+  a) Prerequisites
+
+In order to be compiled, Libterrain requires the packages listed below :
+
+- autoconf
+- automake
+- libtool
+
+It also requires the libnoise library which can be found here :
+
+http://libnoise.sourceforge.net
+
+There is also a fork of libnoise with a cmake build system available here :
+
+http://github.com/qknight/libnoise
+
+  b) Compilation and Installation instructions
+
+To compile and install Libterrain, simply run the following commands :
+
+./autogen.sh
+
+./configure
+
+make
+
+make install
+

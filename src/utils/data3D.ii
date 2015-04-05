@@ -1,0 +1,30 @@
+//#include "data3D.hh"
+#ifndef DATA3D_II
+#define DATA3D_II
+
+template <class T>
+Data3D<T>::Data3D()
+{
+	x = 0;
+	y = 0;
+	z = 0;
+}
+
+template <class T>
+Data3D<T>::~Data3D()
+{
+
+}
+
+template <class T>
+void Data3D<T>::affiche() const
+{
+	std::cout << x;
+	std::cout << std::endl;
+	std::cout << y;
+	std::cout << std::endl;
+	std::cout << z;
+	std::cout << std::endl;
+}
+
+#endif /* DATA3D_II */

@@ -1,0 +1,76 @@
+\chapter{Qualité}
+La qualité d'un programme est une grande valeur ajoutée à tout projet. Les critères qualités considérés pour ce projet sont les suivants :
+\begin{itemize}
+  \item les tests. Effectivement, les tests permettent de certifier certains comportement du programme.
+  Nous avons choisi des tests à granularité faible (tests unitaires) avec des assertions.
+  \item analyse du code.
+  \item un style de codage normé et uniforme. Le Coding Style Linux a été appliqué La façon systématique au code. 
+  L'objectif est de permettre une meilleure lisibilité et appropriation du code.
+  \item gestionnaire de projet.
+  \item une documentation.
+\end{itemize}
+
+
+\section{Tests}
+
+Les tests ont été effectués à l'aide de deux outils. \\
+Le premier est la bibliothèque de tests cppunit. 
+Celle-ci offre diverses méthodes pour lancer des pipelines de tests. 
+Nous avons réaliser des tests dits de Boite Noire avec cette bibliothèque. 
+Le but est que ces tests ne soient pas intrusif dans le code.
+
+\subsection{Tests de persistances}
+Le minimum est d'effectuer des tests de persistances pour chaque algorithme. 
+En effet, nous utilisons des graines de générations ainsi que des génénateurs pseudo-aléatoires. \\
+La stratégie de comparaison est la suivante :
+\begin{itemize}
+ \item préparation du test \textit{via} la méthode setUp(). 
+ Il s'agit de construire tous les objets communs aux différents tests. 
+ Il est évident que les objets initialisés sont corrects car la logique admet que Faux implique n'importe quoi.
+ \item appel des différentes méthodes de tests \textit{via} les macros de cppunit. 
+ Chaque macro appele une fonction test qui exécute elle-même un test logique (Assertion).
+ Ce dernier compare les hauteurs de deux objets heightmap point par point. 
+ \item terminaison du test avec la méthode tearDown().
+\end{itemize}
+
+\subsection{Tests de l'existant}
+La cohérence de nos résultats ont été vérifiés en les comparant avec un équivalent de l'existant.
+Pour le bruit de Perlin et celui de Cellule, nous postulons que les résultats sont cohérents. Effectivement,
+ces deux méthodes de génération sont issues de LibNoise.
+Pour les autres bruits et méthodes fractales, il existe un grand nombre de variantes donc il est difficile
+de comparer le résultat obtenu avec celui existant. Néanmoins, il a été possible d'établir des 
+critères de Résulats Attendus en se basant sur les caractéristiques principales des bruits :
+\begin{itemize}
+ \item bruit de simplex: il phénomène de répétition à grande échelle 
+ avec des regroupements de pixels de hauteurs équivalentes;
+ \item érosion thermique : apparition d'un flou en bordure des hauteurs avec des variations de hauteurs à ces niveaux;
+ \item érosion hydraulique : légère modification des pixels sur l'ensemble de la carte d'élévation.
+\end{itemize}
+
+\section{Analyse du code}
+
+\subsection{Statique}
+CppCheck est sous Licence GPL et est suffisant pour l'analyse statique du code que nous désirons faire.
+Cet outil permet de repérer les erreurs de conception de chacune des classes non détectable par 
+le compilateur g++. Ainsi, il aide à développer une architecture plus propre et plus cohérente.
+
+\subsection{Dynamique}
+Valgrind est un profileur de code. Il nous a servi à détecter les fuites mémoires présents dans le code.
+
+\section{Gestionnaire de projet}
+Un projet fonctionnel passe par une gestion rigoureuse du code et un système de communication efficace.
+\subsection{Gestionnaire de version}
+Gît et Subversion ont été tous les utilisés lors de ce projet. Gît pour toutes les révisions et 
+Svn, pour des versions stables, lors du partage avec les encadrant du projet.
+\subsection{Communication}
+Deux outils ont su faire la différence pour apporter une meilleure gestion du projet.
+Le premier se nomme Trello. Ce dernier est couramment utilisé dans le cadre de projet en groupe restreint. 
+Il a servi à planifier les tâches (code, rapport et réunions).
+
+
+\section{Documentation}
+La documentation permet une meilleur compréhension du code et de l'architecture logicielle.
+Nous avons utilisé le gestionnaire de documentation Doxygen car celui-ci est sous Licence GPL
+et est performant. Toutes les classes, méthodes et attributs du projet (ainsi que les tests) ont été commentés.
+
+

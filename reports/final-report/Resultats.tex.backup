@@ -1,0 +1,59 @@
+\chapter{Resultats}
+
+\section{Générations de Bruits}
+
+\subsection{Bruit de Perlin}
+Le bruit de perlin est obtenu \textit{via} l'utilisation de LibNoise.
+
+\subsection{SimplexNoise}
+Le bruit de simplex a été implémenté et permet d'obtenir des résultats satisfaisant. 
+On remarque un effet de répétition et une faible variation locale de nuances (Contrairement au bruit de Perlin de LibNoise).
+Cela est dû à un choix d'implémentation. Effectivement, nous sommes restés à une implémentation assez basique du bruit de Simplex.
+Cela signifie que, contrairement à LibNoise, nous n'avons pas itéré N fois le bruit avec différentes amplitudes et fréquences.
+Effectivement, le calcul des octaves est un ajout provenant de Fractional Brownian Motion.
+
+\section{Générations par méthodes Fractales}
+
+\section{Modèles d'érosions}
+Deux modèles d'érosions sont présents dans la bibliothèque. 
+L'une se nomme thermal erosion tandis que l'autre se nomme hydraulic erosion.
+Les deux doivent méthodes modifient directement une carte d'élévation généré avec les méthodes cités précédemment.
+
+\subsection{Erosion thermique}
+Cet algorithme se base sur des comparaisons locales de la carte d'élévation pour altérer la hauteur de chaque sommet.
+On peut voir les résultats obtenus sur le bruit de perlin ainsi que sur celui de simplex assez clairement.
+On note également que la cohérence des cartes d'élévations sont les mêmes avec ou sans érosion thermique.
+Cela signifie que la modification des hauteurs se calque bien sur un modèle de génération
+d'où l'idée de ne pas faire un générateur d'érosion par type de carte d'élévation.
+
+\subsection{Erosion hydraulique}
+L'érosion hydraulique simule plusieurs phénomènes à faible conséquence.
+Effectivement, le but de ce modèle est d'apporter des 
+modifications uniformes sur la carte donc la nécessité de ne pas trop accentuer des zones plus que d'autres.
+Tout comme l'érosion thermique, on peut voir que l'algorithme se calque sur la carte d'élévation.
+
+\section{Raffinement}
+Il a été possible de raffiner localement une carte d'élévation en sélectionnant une zone de la carte (méthode generate_area()).
+Il ne s'agit, pour l'instant, que de modifier la valeur de pixels déjà présents. 
+Nous n'avons pas encore implémenté de structures de données 
+tels que les Quad-Tree pour augmenter le nombre de pixels sur une partie de la carte 
+et donc augmenter le niveau de détail d'une zone donnée.
+
+\section{Exports}
+L'export des cartes d'élévations s'effectue sous différents formats : .pgm, .bmp et .ter.
+L'export au format .pgm est relativement simple à mettre en place. 
+Néanmoins, l'implémentation de celui-ci n'était pas spécifié dans le cahier des charges. 
+Nous avons décidé d'implémenter cet export pour tester rapidement nous cartes d'élévation. 
+Le format .bmp est très utilisé par les divers logiciels existants pour 
+l'import et l'export d'une carte d'élévation. Le format .ter nous a permis de lire les cartes
+d'élévation sous Terragen 3.
+
+\subsection{Format .pgm}
+Nous n'avons pas eu besoin de bibliothèques particulière lors de l'implémentation de cet export.
+Les résultats des tests de persistances 
+
+\subsection{Format .bmp}
+
+\subsection{Format .ter}
+
+%%\subsection{Format .obj}

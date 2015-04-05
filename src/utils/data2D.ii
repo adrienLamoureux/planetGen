@@ -1,0 +1,33 @@
+#ifndef DATA2D_II
+#define DATA2D_II
+
+template <typename T>
+Data2D<T>::Data2D()
+{
+	x = 0;
+	y = 0;
+}
+
+template <typename T>
+Data2D<T>::Data2D(T c_x, T c_y)
+{
+	x = c_x;
+	y = c_y;
+}
+
+template <typename T>
+Data2D<T>::~Data2D()
+{
+
+}
+
+template <typename T>
+void Data2D<T>::affiche() const
+{
+	std::cout << x;
+	std::cout << std::endl;
+	std::cout << y;
+	std::cout << std::endl;
+}
+
+#endif /* DATA2D_II */
